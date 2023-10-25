@@ -1,1 +1,15 @@
-
+SELECT COUNT(medicamento) FROM farmacia;
+SELECT MIN(idade) FROM usuarios;
+SELECT MAX(idade) FROM usuarios;
+SELECT ROUND(AVG(idade),1) FROM usuarios WHERE idade >= 18;
+SELECT SUM(estoque) FROM farmacia WHERE categoria = 'blue' OR categoria = 'black';
+SELECT  SUM(estoque) FROM farmacia WHERE  categoria IS NOT NULL;
+SELECT medicamento FROM farmacia WHERE medicamento IS NULL;
+SELECT CONCAT(medicamento, ' (', categoria, ') ') FROM farmacia;
+SELECT CONCAT(id, ' - ', medicamento, ' (', COALESCE(categoria, 'sem categoria'), ') ') FROM farmacia;
+SELECT nome, idade,  CAST (cadastro AS DATE)FROM usuarios WHERE cadastro BETWEEN '2020-01-01' AND '2020-12-31';
+SELECT nome, idade, email, AGE(CAST(cadastro AS TIMESTAMP)) FROM usuarios WHERE idade < 18 ;
+SELECT nome, idade, email, AGE(CAST(cadastro as DATE)) FROM usuarios WHERE idade >=60;
+SELECT categoria, estoque FROM farmacia WHERE categoria IS NOT NULL AND estoque IS NOT NULL;
+SELECT idade, COUNT(idade) FROM usuarios GROUP BY idade;
+SELECT COALESCE(categoria, 'Não possui') , COUNT(medicamento), SUM(estoque) FROM farmacia GROUP BY categoria;
